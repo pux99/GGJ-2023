@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour
 {
     public float speed = 10f;
+    public float maxVelocity = 10f;
 
     private Rigidbody2D rigidbody2D;
 
@@ -19,7 +20,8 @@ public class PlayerMovementController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(horizontal, vertical);
-
+        if(rigidbody2D.velocity.magnitude < maxVelocity)
         rigidbody2D.AddForce(movement * speed);
+      
     }
 }
